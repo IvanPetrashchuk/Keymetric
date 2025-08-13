@@ -1,0 +1,23 @@
+version: '3.8' 
+
+services:
+  postgres_db: 
+    image: postgres:16 
+    restart: always 
+    environment: 
+      POSTGRES_USER: userDB 
+      POSTGRES_PASSWORD: P@ssword123
+      POSTGRES_DB: keymetricdb  
+    ports:
+      - "5432:5432" 
+    volumes:
+      - db_data:/var/lib/postgresql/data 
+    networks:
+      - pg_network 
+
+volumes:
+  db_data: 
+
+networks:
+  pg_network: 
+    driver: bridge 
